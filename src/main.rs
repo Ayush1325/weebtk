@@ -1,5 +1,7 @@
 use cstr::cstr;
+use ki18n_rs::KLocalizedContext;
 use qmetaobject::prelude::*;
+use qmetaobject::QUrl;
 
 // The `QObject` custom derive macro allows to expose a class to Qt and QML
 #[derive(QObject, Default)]
@@ -18,35 +20,22 @@ struct Greeter {
     ),
 }
 
-fn main() {
-    // Register the `Greeter` struct to QML
-    qml_register_type::<Greeter>(cstr!("Greeter"), 1, 0, cstr!("Greeter"));
-    // Create a QML engine from rust
-    let mut engine = QmlEngine::new();
-    // (Here the QML code is inline, but one can also load from a file)
-    engine.load_data(
-        r#"
-        import QtQuick 2.6
-        import QtQuick.Window 2.0
-        // Import our Rust classes
-        import Greeter 1.0
+qrc!(root_qml,
+    "" {
+        "qml/main.qml" as "main.qml",
+    }
+);
 
-        Window {
-            visible: true
-            // Instantiate the rust struct
-            Greeter {
-                id: greeter;
-                // Set a property
-                name: "World"
-            }
-            Text {
-                anchors.centerIn: parent
-                // Call a method
-                text: greeter.compute_greetings("hello")
-            }
-        }
-    "#
-        .into(),
-    );
+fn main() {
+    qmetaobject::log::init_qt_to_rust();
+    env_logger::init();
+
+    qml_register_type::<Greeter>(cstr!("Greeter"), 1, 0, cstr!("Greeter"));
+    let mut engine = QmlEngine::new();
+
+    KLocalizedContext::init_from_engine(&engine);
+
+    root_qml();
+    engine.load_url(QUrl::from(QString::from("qrc:///main.qml")));
     engine.exec();
 }

@@ -8,3 +8,6 @@ edition = "2018"
 [dependencies]
 qmetaobject = "0.2"
 cstr = "0.2"
+ki18n-rs = "0.1"
+log = "0.4"
+env_logger = "0.9"
