@@ -1,0 +1,49 @@
+name: Rust
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    env:
+      QT_QPA_PLATFORM: offscreen
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        qt: [5.15.2]
+        rust: [stable, nightly]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions-rs/toolchain@v1
+      with:
+          profile: minimal
+          toolchain: ${{ matrix.rust }}
+          override: true
+          components: rustfmt, clippy
+    - uses: Swatinem/rust-cache@v1
+      with:
+        key: rust_cache
+
+    - name: Cache Qt
+      id: cache-qt
+      uses: actions/cache@v1
+      with:
+        path: ../Qt
+        key: QtCache-${{ runner.os }}-${{ matrix.qt }}
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v2
+      with:
+        version: ${{ matrix.qt }}
+        cached: ${{ steps.cache-qt.outputs.cache-hit }}
+
+    - name: Install Dependencies
+      run: sudo apt install libkf5i18n-dev libkf5kdelibs4support5-bin  
+    - name: Run tests
+      run: cargo test --verbose --all-features
