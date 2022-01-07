@@ -30,9 +30,9 @@ checksum = "14c189c53d098945499cdfa7ecc63567cf3886b3332b312a5b4585d8d3a6a610"
 
 [[package]]
 name = "cc"
-version = "1.0.71"
+version = "1.0.72"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "79c2681d6594606957bbb8631c4b90a7fcaaa72cdb714743a437b156d6a7eedd"
+checksum = "22a9137b95ea06864e018375b72adfb7db6e6f68cfc8df5a04d00288050485ee"
 
 [[package]]
 name = "cfg-if"
@@ -136,16 +136,35 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "46dbcb333e86939721589d25a3557e180b52778cb33c7fdfe9e0158ff790d5ec"
 
 [[package]]
-name = "ki18n-rs"
-version = "0.1.3"
+name = "kde_frameworks"
+version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "59a531abff72b7cfe697f13471c8438bdf698688b6262bc5b882762f79c5e3d5"
+checksum = "2550f71ef375bee2b562fb8c81acedaaef5f2b35fe612731db919acfdebf6d4a"
+dependencies = [
+ "semver",
+]
+
+[[package]]
+name = "ki18n"
+version = "1.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9879712ebe02b8391ab2105d920af2951fa64d4dfb9706667bc68ccbaff6ebdc"
 dependencies = [
  "cpp",
  "cpp_build",
+ "kde_frameworks",
  "qmetaobject",
  "qttypes",
  "semver",
+]
+
+[[package]]
+name = "kirigami"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "96e3fc487fffe7189e26bf642d0737dae2c7f5f1f40740ef3a919dfa256d8897"
+dependencies = [
+ "kde_frameworks",
 ]
 
 [[package]]
@@ -156,9 +175,9 @@ checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 
 [[package]]
 name = "libc"
-version = "0.2.108"
+version = "0.2.112"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8521a1b57e76b1ec69af7599e75e38e7b7fad6610f037db8c79b127201b5d119"
+checksum = "1b03d17f364a3a042d5e5d46b053bbbf82c92c9430c592dd4c064dc6ee997125"
 
 [[package]]
 name = "log"
@@ -177,18 +196,18 @@ checksum = "308cc39be01b73d0d18f82a0e7b2a3df85245f84af96fdddc5d202d27e47b86a"
 
 [[package]]
 name = "proc-macro2"
-version = "1.0.30"
+version = "1.0.36"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "edc3358ebc67bc8b7fa0c007f945b0b18226f78437d61bec735a9eb96b61ee70"
+checksum = "c7342d5883fbccae1cc37a2353b09c87c9b0f3afd73f5fb9bba687a1f733b029"
 dependencies = [
  "unicode-xid",
 ]
 
 [[package]]
 name = "qmetaobject"
-version = "0.2.4"
+version = "0.2.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "49eabbbac9077f12d0b5a8e00f258c963f546e3d33fe2ef87939bae283a8808a"
+checksum = "a76cc676692bb507fecc1c824daa876f50da783a4ab08934d529302d0bc788ba"
 dependencies = [
  "cpp",
  "cpp_build",
@@ -201,9 +220,9 @@ dependencies = [
 
 [[package]]
 name = "qmetaobject_impl"
-version = "0.2.4"
+version = "0.2.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1a3a998372472defdc75f0c69eddebbb499963019b6871d5e094a6d81d80f14f"
+checksum = "b2f63c587d691e960ffcf0ffdfc85c68a3becc3efe79763b8b0304fa6ffb466b"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -212,9 +231,9 @@ dependencies = [
 
 [[package]]
 name = "qttypes"
-version = "0.2.4"
+version = "0.2.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "53703dc548e89ea3dbfce7695b53ebf27e99af7b85dfd201b7bc1abaf6889bb1"
+checksum = "2d4e491cd7c627027e974928c08eb16042c06c57abfe3be8b15222826b2669e0"
 dependencies = [
  "cpp",
  "cpp_build",
@@ -223,9 +242,9 @@ dependencies = [
 
 [[package]]
 name = "quote"
-version = "1.0.10"
+version = "1.0.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "38bc8cc6a5f2e3655e0899c1b848643b2562f853f114bfec7be120678e3ace05"
+checksum = "47aa80447ce4daf1717500037052af176af5d38cc3e571d9ec1c7353fc10c87d"
 dependencies = [
  "proc-macro2",
 ]
@@ -255,9 +274,9 @@ checksum = "568a8e6258aa33c13358f81fd834adb854c6f7c9468520910a9b1e8fac068012"
 
 [[package]]
 name = "syn"
-version = "1.0.80"
+version = "1.0.85"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d010a1623fbd906d51d650a9916aaefc05ffa0e4053ff7fe601167f3e715d194"
+checksum = "a684ac3dcd8913827e18cd09a68384ee66c1de24157e3c556c9ab16d85695fb7"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -285,7 +304,8 @@ version = "0.1.0"
 dependencies = [
  "cstr",
  "env_logger",
- "ki18n-rs",
+ "ki18n",
+ "kirigami",
  "log",
  "qmetaobject",
 ]

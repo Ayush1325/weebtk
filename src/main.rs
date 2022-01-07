@@ -1,5 +1,5 @@
 use cstr::cstr;
-use ki18n_rs::KLocalizedContext;
+use ki18n::klocalizedcontext::KLocalizedContext;
 use qmetaobject::prelude::*;
 use qmetaobject::QUrl;
 
