@@ -11,16 +11,20 @@ Kirigami.ScrollablePage {
         Layout.fillWidth: true
 
         Controls.TextField {
+            id: username
             Kirigami.FormData.label: "Username:"
         }
         Controls.TextField {
+            id: password
+            echoMode: TextInput.Password
             Kirigami.FormData.label: "Password:"
         }
         Controls.Button {
             Layout.fillWidth: true
             text: i18n("Submit")
             onClicked: {
-                console.log("Submit")
+                console.log("Username: " + username.text)
+                console.log("Password: " + password.text)
             }
         }
     }

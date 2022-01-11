@@ -6,5 +6,5 @@ import org.kde.kirigami 2.13 as Kirigami
 Kirigami.ApplicationWindow {
     id: root
     title: i18nc("@title:window", "Hello World")
-    pageStack.initialPage: Qt.resolvedUrl("qrc:///vndb/login.qml")
+    pageStack.initialPage: Qt.resolvedUrl("qrc:///vndb/vndb.qml")
 }
