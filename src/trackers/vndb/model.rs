@@ -16,9 +16,11 @@ impl QAbstractListModel for VisualNovelListModel {
         if role == USER_ROLE {
             QString::from("Visual Novel").into()
         } else if role == USER_ROLE + 1 {
-            QString::from("qrc:///assets/placeholderimage.png").into()
-        } else {
+            QString::from("qrc:///assets/banner.jpg").into()
+        } else if role == USER_ROLE + 2 {
             QString::from("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id risus id augue euismod accumsan. Nunc vestibulum placerat bibendum.").into()
+        } else {
+            QVariant::default()
         }
     }
 
