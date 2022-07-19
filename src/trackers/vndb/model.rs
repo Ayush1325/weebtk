@@ -12,7 +12,7 @@ impl QAbstractListModel for VisualNovelListModel {
         500
     }
 
-    fn data(&self, index: QModelIndex, role: i32) -> QVariant {
+    fn data(&self, _index: QModelIndex, role: i32) -> QVariant {
         if role == USER_ROLE {
             QString::from("Visual Novel").into()
         } else if role == USER_ROLE + 1 {

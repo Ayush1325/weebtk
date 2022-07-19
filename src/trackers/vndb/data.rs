@@ -2,7 +2,7 @@ use std::net::TcpStream;
 
 use qmetaobject::{prelude::*, qtdeclarative::QSingletonInit};
 
-use vndb::{client::Simple, protocol::message::request::Login, protocol::Request};
+use vndb::client::Simple;
 
 #[derive(QObject, Default)]
 pub struct VNDB {

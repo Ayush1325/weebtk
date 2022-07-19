@@ -58,7 +58,7 @@ fn test() {
     log::info!("Init Called");
 
     match vndb::client::Simple::connect_tls() {
-        Ok(client) => {
+        Ok(_client) => {
             log::info!("Connection Success");
         }
         Err(e) => log::error!("{}", e),
